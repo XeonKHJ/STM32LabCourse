@@ -338,3 +338,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+#Keil编译后生成文件
+Objects/
+
+#列表文件（我想是符号表吧？） 
+Listings/

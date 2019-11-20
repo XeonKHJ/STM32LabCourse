@@ -1,6 +1,19 @@
 #include "exti.h"
 #include "key.h"
 
+static void NVIC_Config()
+{
+	NVIC_InitTypeDef NVIC_InitStructure;
+	
+	//配置组优先级 
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+	
+	//配置中断源
+	NVIC_InitStructure.NVIC_IRQChannel = EXTI4_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; //组优先级为0
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+}
 
 void EXTI_KEY0_Config(void)
 {
