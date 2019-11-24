@@ -24,4 +24,5 @@ void Key1Release()
 
 void Key2Release()
 {
+	GPIO_ResetBits(GPIOB, GPIO_Pin_3);
 }
