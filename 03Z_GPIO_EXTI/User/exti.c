@@ -65,7 +65,7 @@ void EXTI_KEY1_Config(void)
 	GPIO_EXTILineConfig(GPIO_PortSourceGPIOE, GPIO_PinSource3);
 	
 	//指明EXTI线
-	EXTI_InitStructure.EXTI_Line = EXTI_Line4;
+	EXTI_InitStructure.EXTI_Line = EXTI_Line3;
 	
 	//指明工作模式
 	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
@@ -78,4 +78,4 @@ void EXTI_KEY1_Config(void)
 	
 	EXTI_Init(&EXTI_InitStructure);
 }
-	
+

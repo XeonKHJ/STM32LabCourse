@@ -9,3 +9,4 @@ void KEY_Config(void);
 #define KEY1_STATE  GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_3) //KEY2 状态
 
 #endif
+
