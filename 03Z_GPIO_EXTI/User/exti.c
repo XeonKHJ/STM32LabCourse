@@ -6,7 +6,7 @@ static void NVIC_Config()
 	NVIC_InitTypeDef NVIC_InitStructure;
 	
 	//配置组优先级 
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+	//NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
 	
 	//配置中断源
 	NVIC_InitStructure.NVIC_IRQChannel = EXTI4_IRQn;

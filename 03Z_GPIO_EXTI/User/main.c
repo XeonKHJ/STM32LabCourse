@@ -11,8 +11,8 @@ int main()
 	LED_Config();
 	LED_Off_all();
 	
-	__set_PRIMASK(1);
-	__set_PRIMASK(0);
+	//__set_PRIMASK(1);
+	//__set_PRIMASK(0);
 	
 	while(1);
 }
