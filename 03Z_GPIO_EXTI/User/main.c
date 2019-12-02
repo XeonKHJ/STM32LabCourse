@@ -8,7 +8,7 @@ int main()
 	EXTI_KEY0_Config();
 	EXTI_KEY1_Config();
 	
-	LED_Config();
+	LED_Config();#
 	LED_Off_all();
 	
 	//__set_PRIMASK(1);
