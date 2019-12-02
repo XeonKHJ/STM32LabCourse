@@ -6,7 +6,7 @@ void DMA_Config(int bufferSize, int buffer)
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 	DMA_DeInit(DMA1_Channel4);
 	DMA_InitTypeDef DMA_InitStructure;
-	DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)USART1->DR;
+	DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)&USART1->DR; //这个地方送错了啦操，之前没有取地址。
 	DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)buffer;
 	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralDST;
 	DMA_InitStructure.DMA_BufferSize = (uint32_t)bufferSize;
@@ -18,8 +18,6 @@ void DMA_Config(int bufferSize, int buffer)
 	DMA_InitStructure.DMA_Priority = DMA_Priority_Medium;
 	DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
 	DMA_Init(DMA1_Channel4,&DMA_InitStructure);
-	DMA_Cmd(DMA1_Channel4, ENABLE);
-	DMA_ITConfig(DMA1_Channel4, DMA_IT_TC, ENABLE);
 }
 
 
