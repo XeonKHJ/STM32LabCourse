@@ -1,8 +1,18 @@
-#include "stm32f10x.h"
-#include "key.h"
-#include "iwdg.h"
 #include "led.h"
+#include "TIM.h"
+
 int main()
+{
+	LED_Config();
+	LED_Off_all();
+	
+	NVIC_Config();
+	TIM6_Config();
+	while(1);
+}
+
+/*
+int mainBackup()
 {
 	KEY_Config();
 	LED_Config();
@@ -29,4 +39,4 @@ int main()
 			IWDG_ReloadCounter();
 		}
 	}
-}
+}*/
