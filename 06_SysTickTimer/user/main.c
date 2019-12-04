@@ -8,7 +8,19 @@ int main()
 	
 	NVIC_Config();
 	TIM6_Config();
-	while(1);
+	while(1)
+	{
+		u32 temp;
+		SysTick->LOAD=200*(SystemCoreClock/8000000)*1000;
+		SysTick->VAL=0x00;
+		SysTick->CTRL|=SysTick_CTRL_ENABLE_Msk;
+		do
+		{
+			temp = SysTick->CTRL;
+		}while((temp&0x01)&&!(temp&(1<<16)));
+		SysTick->CTRL&=~SysTick_CTRL_ENABLE_Msk;	//ژҕ݆˽Ƿ
+		SysTick->VAL =0X00; 
+	}
 }
 
 /*
