@@ -11,13 +11,13 @@ int main()
 		if(KEY0_STATE == 1)
 		{
 			LED_On(0);
-			Delay(0xFFFF);
+			Delay(0xFFFFF);
 			LED_Off(0);
 		}
 		if(KEY1_STATE == 1)
 		{
 			LED_On(1);
-			Delay(0xFFFF);
+			Delay(0xFFFFF);
 			LED_Off(1);
 		}
 	}
