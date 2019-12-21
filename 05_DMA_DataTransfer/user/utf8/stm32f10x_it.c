@@ -154,51 +154,16 @@ void SysTick_Handler(void)
   * @param  None
   * @retval None
   */
-void EXTI3_IRQHandler(void)
+void DMA1_Channel4_IRQHandler()
 {
-	if(EXTI_GetITStatus(EXTI_Line3)!=RESET)
+	if(DMA_GetITStatus(DMA1_IT_TC4) == SET)
 	{
 		LED_On(0);
-		Delay(0xfff);
-		LED_Off(0);
-	}
-	EXTI_ClearITPendingBit(EXTI_Line3);
-}
-
-
-void EXTI4_IRQHandler(void)
-{
-	if(EXTI_GetITStatus(EXTI_Line4)!=RESET)
-	{
-		LED_On(1);
-		Delay(0xfff);
-		LED_Off(1);
-		EXTI_ClearITPendingBit(EXTI_Line4);
+		DMA_ClearITPendingBit(DMA1_IT_TC4);
+		printf("done");
 	}
 }
 
-void USART1_IRQHandler()
-{
-	uint8_t ch;
-	//LED_Off_all();
-	if(USART_GetITStatus(USART1, USART_IT_RXNE)!=RESET)
-	{
-		ch = (uint8_t)USART_ReceiveData(USART1);
-		switch(ch)
-		{
-			case '1':
-				LED_On(1);
-				Delay(0xfffff);
-				LED_Off(1);
-				break;
-			case '0':
-				LED_On(0);
-				Delay(0xfffff);
-				LED_Off(0);
-				break;
-		}
-	}
-}
 /**
   * @}
   */ 

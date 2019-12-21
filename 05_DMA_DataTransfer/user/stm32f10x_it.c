@@ -25,6 +25,7 @@
 #include "stm32f10x_it.h"
 #include "led.h"
 
+int dmastatus= 1;
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -158,9 +159,10 @@ void DMA1_Channel4_IRQHandler()
 {
 	if(DMA_GetITStatus(DMA1_IT_TC4) == SET)
 	{
+		dmastatus = 0;
 		LED_On(0);
 		DMA_ClearITPendingBit(DMA1_IT_TC4);
-		printf("done");
+		printf("DMA传输完成");
 	}
 }
 

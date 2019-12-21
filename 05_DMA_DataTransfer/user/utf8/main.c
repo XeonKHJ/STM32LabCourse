@@ -1,11 +1,11 @@
-#include "dma.h"
+﻿#include "dma.h"
 #include "usart1.h"
 #include "led.h"
 #include "stm32f10x_it.h"
 
-#define SENDBUFFER_SIZE 10000
+#define SENDBUFFER_SIZE 100
 char SendBuffer[SENDBUFFER_SIZE];
-//extern int dmastatus;
+
 int main()
 {
 	for(int i = 0; i < SENDBUFFER_SIZE; ++i)
@@ -20,17 +20,23 @@ int main()
 	DMA_ITConfig(DMA1_Channel4, DMA_IT_TC, ENABLE);
 	USART_DMACmd(USART1, USART_DMAReq_Tx, ENABLE);
 	DMA_Cmd(DMA1_Channel4, DISABLE);     
- 	DMA_SetCurrDataCounter(DMA1_Channel4,SENDBUFFER_SIZE);
+ 	DMA_SetCurrDataCounter(DMA1_Channel4,SENDBUFFER_SIZE);//DMA閫氶亾鐨凞MA缂撳瓨鐨勫ぇ灏?
  	DMA_Cmd(DMA1_Channel4, ENABLE);
 	
-	while(dmastatus)
+	
+	while(1)
 	{
+		
+		if(DMA_GetFlagStatus(DMA1_FLAG_TC4) == SET)
+		{
 			LED_On(0);
-			Delay(0xFFFF);
-			LED_Off(0);
-			LED_On(1);
-			Delay(0xFFFF);
-			LED_Off(1);
+			DMA_ClearITPendingBit(DMA1_IT_TC4);
+			printf("done");
+			break;
+		}
 	}
-	//printf("DMA传输完成");
+	LED_On(1);
+	printf("sdfsdf");
+	while(1);
+	
 }

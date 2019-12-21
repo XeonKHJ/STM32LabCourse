@@ -1,4 +1,4 @@
-#include "usart1.h"
+﻿#include "usart1.h"
 
 void USART1_Config(void)
 {
@@ -7,13 +7,13 @@ void USART1_Config(void)
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1|RCC_APB2Periph_GPIOA, ENABLE);
 	
-	//USART1 Tx（发送信号）复用GPIO Pin9引脚
+	//USART1 Tx锛堝彂閫佷俊鍙凤級澶嶇敤GPIO Pin9寮曡剼
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
-	//USART1 Rx（接收信号）复用GPIO Pin10引脚
+	//USART1 Rx锛堟帴鏀朵俊鍙凤級澶嶇敤GPIO Pin10寮曡剼
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);

@@ -6,16 +6,11 @@
 extern int ledNo;
 int main()
 {
-	
-	//char msg[100];
-	
 	USART1_Config();
 	NVIC_Config();
 	LED_Config();
 	
-	//printf("请输入要显示的按钮");
+	printf("Press Key");
 	
 	scanf("%d", &ledNo);
-	
-	//printf(&ledNo);
 }

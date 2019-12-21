@@ -34,7 +34,7 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-int ledNo;
+
 void NMI_Handler(void);
 void HardFault_Handler(void);
 void MemManage_Handler(void);
