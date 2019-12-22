@@ -45,6 +45,7 @@
   * @param  None
   * @retval None
   */
+int TimingDelay = 1000;
 void NMI_Handler(void)
 {
 }
@@ -140,6 +141,10 @@ void PendSV_Handler(void)
 #ifndef RTE_CMSIS_RTOS_RTX
 void SysTick_Handler(void)
 {
+	if(TimingDelay != 0)
+	{
+		--TimingDelay;
+	}
 }
 #endif
 /******************************************************************************/

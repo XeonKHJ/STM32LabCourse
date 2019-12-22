@@ -1,27 +1,25 @@
 #include "led.h"
 #include "TIM.h"
+#include "stm32f10x_it.h"
 
 int main()
 {
 	LED_Config();
 	LED_Off_all();
-	TIM6_Config();
-	NVIC_Config();
+	//TIM6_Config();
+	//NVIC_Config();
 	
-	while(1)
-	{
-		/*
-		u32 temp;
-		SysTick->LOAD=200*(SystemCoreClock/8000000)*1000;
-		SysTick->VAL=0x00;
-		SysTick->CTRL|=SysTick_CTRL_ENABLE_Msk;
-		do
+			if(SysTick_Config(SystemCoreClock/500))
 		{
-			temp = SysTick->CTRL;
-		}while((temp&0x01)&&!(temp&(1<<16)));
-		SysTick->CTRL&=~SysTick_CTRL_ENABLE_Msk;	//ژҕ݆˽Ƿ
-		SysTick->VAL =0X00; */
-	}
+			while(1);
+		}
+		SysTick->CTRL &= ~1;
+		LED_On_all();
+		
+		TimingDelay = 1000;
+		SysTick->CTRL |= 1;
+		while(TimingDelay!=0);
+		LED_Off_all();
 }
 
 /*
