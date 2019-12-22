@@ -6,20 +6,18 @@ int main()
 {
 	LED_Config();
 	LED_Off_all();
-	//TIM6_Config();
-	//NVIC_Config();
+	SysTick->CTRL &= ~1;
+	if (SysTick_Config(SystemCoreClock / 1000))
+	{
+		while (1);
+	}
 	
-			if(SysTick_Config(SystemCoreClock/500))
-		{
-			while(1);
-		}
-		SysTick->CTRL &= ~1;
-		LED_On_all();
-		
-		TimingDelay = 1000;
-		SysTick->CTRL |= 1;
-		while(TimingDelay!=0);
-		LED_Off_all();
+	LED_On_all();
+
+	TimingDelay = 1000;
+	SysTick->CTRL |= 1;
+	while (TimingDelay != 0);
+	LED_Off_all();
 }
 
 /*
@@ -30,7 +28,7 @@ int mainBackup()
 	LED_On_all();
 	Delay(0xfffff);
 	LED_Off_all();
-	
+
 	if(RCC_GetFlagStatus(RCC_FLAG_IWDGRST)==SET)
 	{
 		LED_On(1);
