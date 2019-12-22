@@ -154,13 +154,14 @@ void SysTick_Handler(void)
   * @param  None
   * @retval None
   */
-void TIM6_IRQHandler()
+void TIM2_IRQHandler()
 {
-	if(DMA_GetITStatus(DMA1_IT_TC4) == SET)
+	if(TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
 	{
 		LED_On(0);
-		DMA_ClearITPendingBit(DMA1_IT_TC4);
-		printf("done");
+		LED_Off(0);
+		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+		//printf("done");
 	}
 }
 /**
